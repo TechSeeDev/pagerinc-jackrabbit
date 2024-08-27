@@ -1,0 +1,24 @@
+# Github action which build and report status
+name: Build and test PR to master
+
+# Controls when the workflow will run
+on:
+    # Triggers the workflow on pull request events for the "master" branch
+    pull_request:
+        branches: [ "master" ]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    npm-build-and-notify:
+        uses: TechSeePublic/techsee-actions/.github/workflows/npm-build-common-multiple-nodes-rabbitmq.yml@main
+        with:
+            branch: ${{ github.head_ref || github.ref_name }}
+            use-slack: true
+            package-name: ${{ github.repository }}
+            pull-request-url: ${{ github.event.pull_request.html_url }}
+        secrets:
+            git-token: ${{ secrets.GITHUB_TOKEN }}
+            npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+            slack-webhookurl: ${{ secrets.SLACK_NPM_BUILD_WEBHOOK_URL }}
