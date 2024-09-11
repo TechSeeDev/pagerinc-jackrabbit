@@ -4,6 +4,10 @@ require('dotenv').config();
 const Assert = require('chai').assert;
 const Jackrabbit = require('../lib/jackrabbit');
 
+if (!process.env.RABBIT_URL) {
+    process.env.RABBIT_URL =  'amqp://guest:guest@127.0.0.1:5672';
+}
+
 const { after, afterEach, before, beforeEach, describe, it } = require('mocha');
 
 describe('jackrabbit', () => {
@@ -170,7 +174,7 @@ describe('jackrabbit', () => {
 
             before(() => {
 
-                beforeRabbit = Jackrabbit(process.env.RABBIT_URL);
+                beforeRabbit = Jackrabbit(process.env.RABBIT_URL );
             });
 
             it('passes the connection to the exchange', (done) => {
