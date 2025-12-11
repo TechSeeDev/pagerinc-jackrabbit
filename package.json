@@ -45,13 +45,18 @@
     "uuid": "8.x"
   },
   "devDependencies": {
+    "@nodesecure/cli": "3.x",
     "@pager/semantic-release-config": "2.x",
+    "audit-ci": "7.x",
     "chai": "4.x",
     "dotenv": "16.3.1",
     "eslint": "7.x",
     "eslint-config-hapi": "12.x",
     "eslint-plugin-hapi": "4.x",
+    "gitleaks-secret-scanner": "1.x",
+    "lockfile-lint": "4.x",
     "mocha": "10.x",
+    "npm-package-json-lint": "8.x",
     "semantic-release": "21.x",
     "sinon": "15.x"
   },
@@ -63,11 +68,15 @@
     "recursive": true
   },
   "scripts": {
+    "preinstall": "npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm registry.npmjs.org --validate-https && npx audit-ci@^7 --config .audit-ci.json && npx gitleaks-secret-scanner@latest detect --no-git --source . --baseline-path .gitleaks-baseline.json && npx npm-package-json-lint .",
     "prepublishOnly": "npm run build",
     "build": "npm run lint && npm run test",
     "test": "mocha",
     "lint": "eslint lib/** test/**",
-    "lint-fix": "eslint lib/** test/** --fix"
+    "lint-fix": "eslint lib/** test/** --fix",
+    "audit:check": "npx audit-ci@^7 --config .audit-ci.json",
+    "secrets:check": "npx gitleaks-secret-scanner@latest detect --no-git --source . --baseline-path .gitleaks-baseline.json",
+    "security:nodesecure": "npx @nodesecure/cli auto"
   },
   "release": {
     "extends": "@pager/semantic-release-config"

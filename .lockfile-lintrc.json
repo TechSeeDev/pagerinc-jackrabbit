@@ -1,0 +1,7 @@
+{
+  "type": "npm",
+  "allowed-hosts": ["npm", "registry.npmjs.org"],
+  "validate-https": true,
+  "validate-package-names": false
+}
+
