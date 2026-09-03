@@ -1,6 +1,6 @@
 {
   "name": "@techsee/pager-jackrabbit-mod",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Easy RabbitMQ for node",
   "keywords": [
     "amqp",
@@ -45,23 +45,24 @@
     "uuid": "8.x"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "3.x",
+    "@eslint/js": "10.x",
     "@nodesecure/cli": "3.x",
     "@pager/semantic-release-config": "2.x",
     "audit-ci": "7.x",
     "chai": "4.x",
-    "dotenv": "16.3.1",
-    "eslint": "7.x",
+    "dotenv": "17.x",
+    "eslint": "9.x",
     "eslint-config-hapi": "12.x",
     "eslint-plugin-hapi": "4.x",
-    "gitleaks-secret-scanner": "1.x",
-    "lockfile-lint": "4.x",
-    "mocha": "10.x",
-    "npm-package-json-lint": "8.x",
-    "semantic-release": "21.x",
-    "sinon": "15.x"
+    "lockfile-lint": "5.x",
+    "mocha": "11.x",
+    "npm-package-json-lint": "11.x",
+    "semantic-release": "25.x",
+    "sinon": "22.x"
   },
   "peerDependencies": {
-    "newrelic": "11.x"
+    "newrelic": ">11"
   },
   "mocha": {
     "bail": true,

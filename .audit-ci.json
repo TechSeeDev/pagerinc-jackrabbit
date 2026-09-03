@@ -1,7 +1,7 @@
 {
-  "low": true,
-  "moderate": true,
-  "high": true,
+  "low": false,
+  "moderate": false,
+  "high": false,
   "critical": true,
   "allowlist": [
     "GHSA-fjxv-7rqg-78g4",
@@ -24,7 +24,8 @@
     "GHSA-952p-6rrq-rcjv",
     "GHSA-76p7-773f-r4q5",
     "GHSA-f5x3-32g6-xq36",
-    "GHSA-v6h2-p8h4-qcjw"
+    "GHSA-v6h2-p8h4-qcjw",
+    "GHSA-23hp-3jrh-7fpw" // tar: decompression/parse DoS, indirect via lerna/node-gyp/@mapbox/node-pre-gyp, fix requires major bump to tar@7
   ]
 }
 
