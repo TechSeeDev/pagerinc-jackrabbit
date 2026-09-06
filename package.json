@@ -1,6 +1,6 @@
 {
   "name": "@techsee/pager-jackrabbit-mod",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Easy RabbitMQ for node",
   "keywords": [
     "amqp",
@@ -55,6 +55,7 @@
     "eslint": "9.x",
     "eslint-config-hapi": "12.x",
     "eslint-plugin-hapi": "4.x",
+    "gitleaks-secret-scanner": "2.x",
     "lockfile-lint": "5.x",
     "mocha": "11.x",
     "npm-package-json-lint": "11.x",
@@ -69,7 +70,7 @@
     "recursive": true
   },
   "scripts": {
-    "preinstall": "npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm registry.npmjs.org --validate-https && npx audit-ci@^7 --config .audit-ci.json && npx gitleaks-secret-scanner@latest detect --no-git --source . --baseline-path .gitleaks-baseline.json && npx npm-package-json-lint .",
+    "prepare": "npx lockfile-lint --path package-lock.json --type npm --allowed-hosts npm registry.npmjs.org --validate-https && npx audit-ci@^7 --config .audit-ci.json && npx gitleaks-secret-scanner@latest detect --no-git --source . --baseline-path .gitleaks-baseline.json && npx npm-package-json-lint .",
     "prepublishOnly": "npm run build",
     "build": "npm run lint && npm run test",
     "test": "mocha",
